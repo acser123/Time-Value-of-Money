@@ -108,7 +108,7 @@ class Tvm {
 		} else {
 			helper = (FV - PV*pow((1+i_h), N)-PMT*((pow((1+i_h), N)-1)/i_h));
 		}
-	printf("*debug* calc_i_internal(): N=%f; i_h=%.20f; PV=%f; PMT=%f; FV=%f; calc_i_internal=%f;\n", N, i_h, PV, PMT, FV, helper);
+//	printf("*debug* calc_i_internal(): N=%f; i_h=%.20f; PV=%f; PMT=%f; FV=%f; calc_i_internal=%f;\n", N, i_h, PV, PMT, FV, helper);
 		return helper;
 	}
 
