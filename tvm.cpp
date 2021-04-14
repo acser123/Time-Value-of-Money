@@ -108,7 +108,7 @@ class Tvm {
 		} else {
 			helper = (FV - PV*pow((1+i_h), N)-PMT*((pow((1+i_h), N)-1)/i_h));
 		}
-	//	printf("*debug* calc_i_internal(): N=%f; i=%.20f; PV=%f; PMT=%f; FV=%f; calc_i_internal=%f;\n", N, i, PV, PMT, FV, helper);
+	printf("*debug* calc_i_internal(): N=%f; i_h=%.20f; PV=%f; PMT=%f; FV=%f; calc_i_internal=%f;\n", N, i_h, PV, PMT, FV, helper);
 		return helper;
 	}
 
@@ -157,16 +157,17 @@ class Tvm {
 		double (Tvm::*calculate)(double) = &Tvm::calc_i_internal;
 		// can't try from 0 as it will not converge for the calc_i_internal function
 
-/*
+
 		// From https://en.wikipedia.org/wiki/Internal_rate_of_return
 		double A = N*PMT;
 		double p = log(A/fabs(PMT))/log(A/PV);
 		double r1 = pow(A/fabs(PMT), (2/(N+1)))-1; 
 		double r2 = pow((1+r1), p) - 1;
 		i = find_root ( calculate, r1, r2);
-*/
 
-		i = find_root ( calculate, -1, 1);
+
+		//i = find_root ( calculate, -1, 1);
+		i = find_root ( calculate, 0.002, 1);
 	}
 
 	double get_i() {
